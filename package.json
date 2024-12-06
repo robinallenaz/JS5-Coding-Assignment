@@ -1,0 +1,11 @@
+{
+  "name": "menu-app",
+  "version": "1.0.0",
+  "description": "A simple console-based menu application",
+  "main": "menuApp.js",
+  "scripts": {
+    "start": "node menuApp.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
