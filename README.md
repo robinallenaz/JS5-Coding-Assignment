@@ -19,8 +19,5 @@ This is a simple console-based menu application that allows users to manage a li
 3. Navigate to the project directory.
 
 ## Usage
-1. Open a terminal and navigate to the project directory.
-2. Run the application using the command:
-   ```
-   node menuApp.js
-   ```
+1. Open the `index.html` file in a web browser.
+2. Use the on-screen buttons to create, view, and delete items. The application will prompt for input using browser dialogs.

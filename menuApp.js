@@ -37,25 +37,16 @@ class ItemManager {
         this.items = [];
     }
 
-    createItem() {
-        const item = prompt("Enter item name:");
+    createItem(item) {
         this.items.push(item);
         console.log(`Item '${item}' added.`);
     }
 
     viewItems() {
-        if (this.items.length === 0) {
-            console.log("No items to display.");
-        } else {
-            console.log("Items:");
-            this.items.forEach((item, index) => {
-                console.log(`${index + 1}. ${item}`);
-            });
-        }
+        document.getElementById('items').innerHTML = this.items.map((item, index) => `<div>${index + 1}. ${item}</div>`).join('');
     }
 
-    deleteItem() {
-        const index = parseInt(prompt("Enter item number to delete:")) - 1;
+    deleteItem(index) {
         if (index >= 0 && index < this.items.length) {
             const removedItem = this.items.splice(index, 1);
             console.log(`Item '${removedItem}' deleted.`);
@@ -65,16 +56,21 @@ class ItemManager {
     }
 }
 
-function main() {
-    const itemManager = new ItemManager();
-    const menu = new Menu(itemManager);
-    let continueRunning = true;
-
-    while (continueRunning) {
-        menu.displayMenu();
-        const choice = prompt("Enter your choice:");
-        continueRunning = menu.handleChoice(choice);
-    }
+function createItem() {
+    const item = prompt("Enter item name:");
+    itemManager.createItem(item);
+    itemManager.viewItems();
 }
 
-main();
+function viewItems() {
+    itemManager.viewItems();
+}
+
+function deleteItem() {
+    const index = parseInt(prompt("Enter item number to delete:")) - 1;
+    itemManager.deleteItem(index);
+    itemManager.viewItems();
+}
+
+const itemManager = new ItemManager();
+viewItems();
